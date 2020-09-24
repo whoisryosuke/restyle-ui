@@ -1,4 +1,4 @@
-# Storybook Example
+# Restyle UI
 
 <p>
   <!-- iOS -->
@@ -11,9 +11,17 @@
 
 <img alt="expo examples" src="https://i.imgur.com/j253BeR.png">
 
-You can use Storybook to test and share your component library quickly and easily! This example shows how to use Expo modules with Storybook CLI and Expo CLI.
+React Native component library built with Shopify's Restyle library to allow for **theming** and **utility style props**.
 
-> This is setup as Storybook with Expo, instead of Expo with Storybook. This means that it's a dedicated RN app for Storybook, instead of attaching a Storybook instance to your current app (if you have one). If you have a pre-existing app setup with Expo, you could setup Storybook in the same project. This is setup to be separate, for something like a design system.
+```
+<Box backgroundColor="primary" mt={2} p={3}>
+  <Text color="textInverted" fontFamily="Roboto, sans-serif">
+    Branded box with white text inside
+  </Text>
+</Box>
+```
+
+> This is setup as Storybook with Expo, instead of Expo with Storybook.
 
 ## Getting Started
 
@@ -38,6 +46,51 @@ Storybook with Expo CLI
 ├── app.config.js ➡️ Expo config file
 └── babel.config.js ➡️ Babel config (should be using `babel-preset-expo`)
 ```
+
+### Adding Storybook Stories
+
+1. Create a file alongside your component named `ComponentName.stories.tsx`.
+2. We use CSF story format (lets us export stories to test in other context):
+
+```js
+import React from "react";
+import { storiesOf } from "@storybook/react-native";
+// Import your component
+import Text from "./Text";
+
+// Define your component and it's name
+export default {
+  title: "Text",
+  component: Text,
+};
+
+// Stories
+export const Basic = () => <Text>What's up</Text>;
+export const Colored = () => <Text color="red">What's up</Text>;
+
+// This is necessary to make it show in Expo
+// Add all stories to RN/Expo storybook
+storiesOf("Text", module).add("Basic", Basic).add("Colored", Colored);
+```
+
+3. You should be able to see it in Storybook web if you spin it up `expo web`. But to see it native, you need to import the story directly in `stories/index.js`.
+
+Done! You should see your new component stories in Storybook web and native.
+
+### Semantic Release
+
+This project is setup with semantic-release to automatically handle versioning based on git commits and branching. It also is setup with Commitzen's CLI (`yarn commit`), which walks you through crafting a "conventional commit".
+
+1. Create a branch for your work: `git checkout -b name-here`
+1. Do some cool code jutsu.
+1. `git add` your changed files.
+1. `yarn commit` to run the CLI
+
+You'll be able to pick from things like a feature, bug fix, or CI update. And add your commit message, as well as a longer detailed message.
+
+After creating this branch, create a pull request (PR) on Github. Once approved, it will be moved to a release branch (like `next`), and eventually merged into master.
+
+When merged into master, the CI (CircleCI in our case) will run semantic-release, which checks commits since last release.
 
 ## 📝 Notes
 
