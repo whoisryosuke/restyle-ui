@@ -9,16 +9,63 @@ export default {
 };
 
 // Stories
-export const Primary = () => (
-  <Button label="What's up" onPress={action("clicked")} appearance="primary" />
-);
-export const Secondary = () => (
+
+// Sizes
+export const XL = () => (
   <Button
     label="What's up"
     onPress={action("clicked")}
-    appearance="secondary"
+    appearance="filled"
+    size="xl"
+  />
+);
+export const Large = () => (
+  <Button
+    label="What's up"
+    onPress={action("clicked")}
+    appearance="filled"
+    size="lg"
+  />
+);
+export const Medium = () => (
+  <Button
+    label="What's up"
+    onPress={action("clicked")}
+    appearance="filled"
+    size="md"
+  />
+);
+export const Small = () => (
+  <Button
+    label="What's up"
+    onPress={action("clicked")}
+    appearance="filled"
+    size="sm"
+  />
+);
+export const XS = () => (
+  <Button
+    label="What's up"
+    onPress={action("clicked")}
+    appearance="filled"
+    size="xs"
   />
 );
 
+// Appearance
+export const Filled = () => (
+  <Button label="What's up" onPress={action("clicked")} appearance="filled" />
+);
+export const Outline = () => (
+  <Button label="What's up" onPress={action("clicked")} appearance="outline" />
+);
+export const Ghost = () => (
+  <Button label="What's up" onPress={action("clicked")} appearance="ghost" />
+);
+
 // Add all stories to RN/Expo storybook
-storiesOf("Button", module).add("Primary", Primary).add("Secondary", Secondary);
+storiesOf("Button", module)
+  .add("Large", Large)
+  .add("Filled", Filled)
+  .add("Outline", Outline)
+  .add("Ghost", Ghost);
