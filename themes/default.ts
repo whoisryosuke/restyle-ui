@@ -250,12 +250,72 @@ const theme = createTheme({
       color: "text",
     },
   },
-  brandVariants: {
-    primary: {
+  textAppearanceVariants: {
+    filled: {
+      color: "textInverted",
+    },
+    outline: {
       color: "primary",
     },
-    secondary: {
-      color: "secondary",
+    ghost: {
+      color: "primary",
+    },
+  },
+  appearanceVariants: {
+    filled: {
+      backgroundColor: "primary",
+    },
+    outline: {
+      borderWidth: 1,
+      borderStyle: "solid",
+      borderColor: "primary",
+    },
+    ghost: {
+      backgroundColor: "transparent",
+    },
+  },
+  textSizeVariants: {
+    xl: {
+      fontSize: 21,
+      lineHeight: 24,
+    },
+    lg: {
+      fontSize: 16,
+      lineHeight: 18.75,
+    },
+    md: {
+      fontSize: 14,
+      lineHeight: 16.41,
+    },
+    sm: {
+      fontSize: 12,
+      lineHeight: 14.06,
+    },
+    xs: {
+      fontSize: 12,
+      lineHeight: 14.06,
+    },
+  },
+  sizeVariants: {
+    xl: {
+      py: 4,
+      px: 5,
+    },
+    lg: {
+      py: 3,
+      px: 4,
+    },
+    md: {
+      py: 2,
+      px: 3,
+    },
+    sm: {
+      py: 1,
+      px: 2,
+    },
+    xs: {
+      py: 1,
+      px: 1,
     },
   },
 });

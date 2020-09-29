@@ -12,32 +12,42 @@ import {
   VariantProps,
 } from "@shopify/restyle";
 
-import Text from "../Text/Text";
+import ButtonLabel from "../ButtonLabel/ButtonLabel";
 import { Theme } from "../../themes/default";
 
 const restyleFunctions = [
   spacing,
   border,
   backgroundColor,
-  createVariant({ property: "appearance", themeKey: "brandVariants" }),
+  createVariant({ property: "appearance", themeKey: "appearanceVariants" }),
+  createVariant({ property: "size", themeKey: "sizeVariants" }),
 ];
 type Props = SpacingProps<Theme> &
   BorderProps<Theme> &
   BackgroundColorProps<Theme> &
-  VariantProps<Theme, "brandVariants", "appearance"> & {
+  VariantProps<Theme, "appearanceVariants", "appearance"> &
+  VariantProps<Theme, "sizeVariants", "size"> & {
+    color?: keyof Theme["colors"];
     label: string;
     onPress: () => void;
   };
 
-const Button = ({ onPress, label, ...rest }: Props) => {
-  const props = useRestyle(restyleFunctions, rest);
+const Button = ({
+  appearance,
+  color,
+  onPress,
+  label,
+  size,
+  ...rest
+}: Props) => {
+  const props = useRestyle(restyleFunctions, { appearance, size, ...rest });
 
   return (
     <TouchableOpacity onPress={onPress}>
       <View {...props}>
-        <Text color="mainBackground" fontSize={32}>
+        <ButtonLabel appearance={appearance} color={color} size={size}>
           {label}
-        </Text>
+        </ButtonLabel>
       </View>
     </TouchableOpacity>
   );
