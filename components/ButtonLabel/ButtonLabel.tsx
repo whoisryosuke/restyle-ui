@@ -14,7 +14,7 @@ type Props = VariantProps<Theme, "textAppearanceVariants", "appearance"> &
   VariantProps<Theme, "textSizeVariants", "size"> &
   React.ComponentProps<typeof Text>;
 
-const ButtonLabel = createRestyleComponent<Props>(
+const ButtonLabel = createRestyleComponent<Props, Theme>(
   [
     createVariant({
       property: "appearance",
